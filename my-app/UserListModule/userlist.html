@@ -1,0 +1,21 @@
+<div ng-controller="UserListController">
+  <div class="icon-container">
+    <i ng-if="isTokenUsed" class="fa fa-check-circle" style="color: green;"></i>
+    <span ng-if="isTokenUsed" style="font-size: 18px; font-weight: bold;">Users (Token used)</span>
+    <i ng-if="!isTokenUsed" class="fa fa-times-circle" style="color: red;"></i>
+    <span ng-if="!isTokenUsed" style="font-size: 18px; font-weight: bold;">Users (Token not used)</span>
+  </div>
+  <div class="card-container">
+    <div class="user-card" ng-repeat="user in userList">
+      <img ng-src="{{ user.avatar_url }}" alt="{{ user.login }}">
+      <div class="card-content">
+        <span>{{ user.login }}</span>
+      </div>
+    </div>
+  </div>
+  <div ng-if="isTokenUsed && userData">
+  <h2>{{ userData.login }}</h2>
+  <p>Number of Repositories: {{ userData.public_repos }}</p>
+  <p>Number of Followers: {{ userData.followers }}</p>
+</div>
+</div>
